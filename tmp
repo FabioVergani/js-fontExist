@@ -5,7 +5,7 @@ f=function(a,b){var o=w,p=a;return p in o?o[p]:(o[p]=b in o);};
 
 
 
-if(f('hasCanvas','HTMLCanvasElement')){
+if(f('hasCanvas','HTMLCanvasElement')&&f('supportCanvas2D','CanvasRenderingContext2D')){
  log(44444);
 }else{
 };
