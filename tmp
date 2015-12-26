@@ -3,11 +3,21 @@ var fontExist=window.checkFont||(function($w){
  K='monospace',S='72px',T='abcdefghijklmnopqrstuvwxyz0123456789',
  A='defaultFontWidth',
  f=function(a,b){var o=w,p=a;return p in o?o[p]:(o[p]=b in o);};
- if(!f('hasCanvas','HTMLCanvasElement')&&f('supportCanvas2D','CanvasRenderingContext2D')){
+ if(f('hasCanvas','HTMLCanvasElement')&&f('supportCanvas2D','CanvasRenderingContext2D')){
+
+
+  f=function(n){
+	var p=A, k=K, d=$d, e=d.createElement('canvas'), s=e.getContext('2d'), f=function(t){var o=s;o.font=S+' '+t;return o.measureText(T).width;};
+	p=d[p]||(d[p]=f(k));
+	s=p!==f(n+','+k);
+	delete e;
+	return s;
+  };
+
 
  }else{//CanvasIsNotSupported:
   f=function(n){
-  var d=$d, p=A, k=K, b=d.body, e=d.createElement('span'), s=e.style, f=function(t){var o=s;o.display='none';o.fontFamily=t;o.display='inline';return e.offsetWidth;};
+  var p=A, k=K, d=$d,  b=d.body, e=d.createElement('span'), s=e.style, f=function(t){var o=s;o.display='none';o.fontFamily=t;o.display='inline';return e.offsetWidth;};
   e.appendChild(d.createTextNode(T));
   s.fontSize=S;
   b.appendChild(e);
@@ -22,3 +32,5 @@ var fontExist=window.checkFont||(function($w){
 //
 console.log(fontExist('zzz'));
 console.log(fontExist('arial'));
+
+
