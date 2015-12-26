@@ -1,11 +1,20 @@
 var log=console.log.bind(console);
 //================================
-var w=window,
-f=function(a,b){var o=w,p=a;return p in o?o[p]:(o[p]=b in o);};
+function fontExist(fontName){
+ var w=window, d=w.document, n, e, f=function(a,b){var o=w,p=a+'Canvas';return p in o?o[p]:(o[p]=b in o);};
 
+ if(f('has','HTMLCanvasElement')&&f('support','CanvasRenderingContext2D')){
+	e=d.createElement('canvas').getContext('2d');
+	f=function(s){var o=e;o.font='72px '+s;return o.measureText('abcdefghijklmnopqrstuvwxyz0123456789').width;};
+	n='monospace';
+	e=f(n)!==f(fontName+','+n);
 
-
-if(f('hasCanvas','HTMLCanvasElement')&&f('supportCanvas2D','CanvasRenderingContext2D')){
- log(44444);
-}else{
+ }else{//CanvasIsNotSupported:
+ };
+ return e;
 };
+
+ 
+
+log(fontExist('zzz'));
+log(fontExist('arial'));
