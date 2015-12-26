@@ -1,12 +1,11 @@
 var log=console.log.bind(console);
 //================================
-var w=window, o,p,v;
+var w=window,
+f=function(a,b){var o=w,p=a;return p in o?o[p]:(o[p]=b in o);};
 
-o=w;
-p='hasCanvas';
-v=(p in o)?o[p]:(o[p]='HTMLCanvasElement' in w);
 
-if(v===true){
- log('CanvasIsSupported!');
+
+if(f('hasCanvas','HTMLCanvasElement')){
+ log(44444);
 }else{
 };
