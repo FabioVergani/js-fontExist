@@ -1,0 +1,12 @@
+var log=console.log.bind(console);
+//================================
+var w=window, o,p,v;
+
+o=w;
+p='hasCanvas';
+v=(p in o)?o[p]:(o[p]='HTMLCanvasElement' in w);
+
+if(v===true){
+ log('CanvasIsSupported!');
+}else{
+};
